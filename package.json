@@ -1,0 +1,106 @@
+{
+  "name": "opencode-launcher",
+  "displayName": "OpenCode Launcher",
+  "description": "Launch OpenCode (v2) in a VS Code split terminal. Top-right button, keybindings, and @file context insert.",
+  "version": "1.0.0",
+  "publisher": "amitnarw",
+  "author": "Amit Narwal",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amitnarw/opencode-launcher"
+  },
+  "homepage": "https://github.com/amitnarw/opencode-launcher#readme",
+  "bugs": {
+    "url": "https://github.com/amitnarw/opencode-launcher/issues"
+  },
+  "icon": "images/icon.png",
+  "pricing": "Free",
+  "galleryBanner": {
+    "color": "#0B1220",
+    "theme": "dark"
+  },
+  "keywords": [
+    "opencode",
+    "ai",
+    "terminal",
+    "agent",
+    "coding-assistant",
+    "launcher"
+  ],
+  "categories": [
+    "Other"
+  ],
+  "engines": {
+    "vscode": "^1.94.0"
+  },
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "opencodeLauncher.openTerminal",
+        "title": "Open OpenCode",
+        "icon": {
+          "light": "images/button-dark.svg",
+          "dark": "images/button-light.svg"
+        }
+      },
+      {
+        "command": "opencodeLauncher.openNewTerminal",
+        "title": "Open OpenCode in new tab",
+        "icon": {
+          "light": "images/button-dark.svg",
+          "dark": "images/button-light.svg"
+        }
+      },
+      {
+        "command": "opencodeLauncher.addFilepathToTerminal",
+        "title": "Add Filepath to Terminal"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "opencodeLauncher.openNewTerminal",
+          "group": "navigation"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "opencodeLauncher.openTerminal",
+        "key": "ctrl+escape",
+        "mac": "cmd+escape",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "opencodeLauncher.openNewTerminal",
+        "key": "ctrl+shift+escape",
+        "mac": "cmd+shift+escape",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "opencodeLauncher.addFilepathToTerminal",
+        "key": "ctrl+alt+k",
+        "mac": "cmd+alt+k",
+        "when": "editorTextFocus"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "npm run check-types && node esbuild.js",
+    "package": "npm run check-types && node esbuild.js --production",
+    "check-types": "tsc --noEmit",
+    "vscode:package": "vsce package",
+    "vscode:publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/node": "20.x",
+    "@types/vscode": "^1.94.0",
+    "@vscode/vsce": "^3.2.0",
+    "esbuild": "^0.25.3",
+    "typescript": "^5.8.3"
+  }
+}
